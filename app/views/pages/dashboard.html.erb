@@ -1,0 +1,18 @@
+<h1>Dashboard</h1>
+
+<h2>Favorites</h2>
+
+<table>
+<thead>
+  <p>Post</p>
+</thead>
+  <tbody>
+  <% current_user.favorite_posts.each do |post| %>
+    <tr>
+      <td>
+        <%= post.title %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

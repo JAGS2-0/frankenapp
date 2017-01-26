@@ -51,3 +51,30 @@ end
 And(/^there should be no new user accounts$/) do
   expect(User.count).to eq 1
 end
+
+And(/^I'm on the sign in page$/) do
+  visit '/users/sign_in'
+end
+
+When(/^I sign in$/) do
+  fill_in 'user_email', with: 'james@example.com'
+  fill_in 'user_password', with: 'hunter2'
+  click_on 'Log in'
+end
+
+
+When(/^I enter the wrong password$/) do
+  fill_in 'user_email', with: 'james@example.com'
+  fill_in 'user_password', with: 'hunter22'
+  click_on 'Log in'
+end
+
+Then(/^I should not be able to log in$/) do
+  expect(page).to have_content 'Log in'
+end
+
+When(/^I enter the wrong username$/) do
+  fill_in 'user_email', with: 'james@example'
+  fill_in 'user_password', with: 'hunter22'
+  click_on 'Log in'
+end

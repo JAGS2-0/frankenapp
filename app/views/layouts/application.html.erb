@@ -10,6 +10,11 @@
 
 <% if current_user %>
   <p>Signed in as: <%= current_user.email %></p>
+
+    <%= form_tag '/users/sign_out', method: :delete do %>
+        <button>Sign Out</button>
+    <% end %>
+
 <% end %>
 
 <%= yield %>
